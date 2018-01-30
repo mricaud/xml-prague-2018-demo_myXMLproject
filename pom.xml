@@ -1,0 +1,159 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>eu.els.projets.ouvrage</groupId>
+  <artifactId>ouvrage-2-html</artifactId>
+  <version>1.0</version>
+  <packaging>jar</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>eu.els.lib.xsl</groupId>
+      <artifactId>cals2html</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.xsltfunctions</groupId>
+      <artifactId>functx</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+    <plugins>
+      
+      <plugin>
+        <groupId>top.marchand.xml.maven</groupId>
+        <artifactId>catalogBuilder-maven-plugin</artifactId>
+        <version>1.0.4</version>
+        <executions>
+          <execution>
+            <id>preparation</id>
+            <goals>
+              <goal>catalog</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>packaging</id>
+            <phase>package</phase>
+            <goals>
+              <goal>catalog</goal>
+            </goals>
+            <configuration>
+              <rewriteToProtocol>cp</rewriteToProtocol>
+              <catalogFileName>target/generated-catalog/catalog.xml</catalogFileName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>io.xspec.maven</groupId>
+        <artifactId>xspec-maven-plugin</artifactId>
+        <version>1.5.0</version>
+        <dependencies>
+          <dependency>
+            <groupId>extern.net.sf.saxon</groupId>
+            <artifactId>saxonee-license</artifactId>
+            <version>9.7</version>
+          </dependency>
+          <dependency>
+            <groupId>extern.net.sf.saxon</groupId>
+            <artifactId>saxonee</artifactId>
+            <type>jar</type>
+            <version>9.7.0.13</version>
+          </dependency>
+        </dependencies>
+        <configuration>
+          <catalogFile>catalog.xml</catalogFile>
+          <generateSurefireReport>true</generateSurefireReport>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>run-xspec</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+    </plugins>
+  </build>
+  
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+      </plugin>
+      <plugin>
+        <groupId>top.marchand.xml</groupId>
+        <artifactId>xslDoc-maven-plugin</artifactId>
+        <version>0.10</version>
+        <configuration>
+          <xslDirEntries>
+            <xslDirEntry>
+              <xslDirectory>src/main/xsl</xslDirectory>
+            </xslDirEntry>
+          </xslDirEntries>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <url>http://srvic/nexus/content/repositories/releases</url>
+      <layout>default</layout>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://srvic/nexus/content/repositories/snapshots</url>
+      <layout>default</layout>
+    </snapshotRepository>
+    <site>
+      <id>xslLib</id>
+      <name>xslLib website</name>
+      <url>file:///var/www/html/Artefact/${project.groupId}/${project.artifactId}/${project.version}/</url>
+      <!--Site : http://srvicprd/Artefact/-->
+    </site>
+  </distributionManagement>
+  
+  <pluginRepositories>
+    <pluginRepository>
+      <id>nexus-public</id>
+      <url>http://srvic/nexus/content/groups/public</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+  
+</project>
