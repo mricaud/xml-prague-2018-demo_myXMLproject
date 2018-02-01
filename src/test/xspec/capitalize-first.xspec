@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description 
+  xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+  stylesheet="../../main/xsl/capitalize-first.xsl"
+  xslt-version="3.0">
+  
+  <x:scenario label="test" xml:base="../sample/">
+    <x:context>
+      <anything>
+        <otherthing/>
+      </anything>
+    </x:context>
+    <x:expect label="capital first">
+      <Anything>
+        <Otherthing/>
+      </Anything>
+    </x:expect>
+  </x:scenario>
+  
+</x:description>

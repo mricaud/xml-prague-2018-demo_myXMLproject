@@ -6,17 +6,8 @@
   <artifactId>ouvrage-2-html</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
   
   <dependencies>
-    <dependency>
-      <groupId>eu.els.lib.xsl</groupId>
-      <artifactId>cals2html</artifactId>
-      <version>1.2</version>
-    </dependency>
     <dependency>
       <groupId>com.xsltfunctions</groupId>
       <artifactId>functx</artifactId>
@@ -25,6 +16,12 @@
   </dependencies>
   
   <build>
+    
+    <resources>
+      <resource>
+        <directory>src/main/xsl</directory>
+      </resource>
+    </resources>
     <plugins>
       
       <plugin>
@@ -141,7 +138,6 @@
       <id>xslLib</id>
       <name>xslLib website</name>
       <url>file:///var/www/html/Artefact/${project.groupId}/${project.artifactId}/${project.version}/</url>
-      <!--Site : http://srvicprd/Artefact/-->
     </site>
   </distributionManagement>
   

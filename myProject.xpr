@@ -20,26 +20,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>src/test/sample/sample.ouvrage.xml</String>
+                                    <String>src/test/sample/sample.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>ouvrage-to-html.xsl</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XSL</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>../ouvrage-to-html/src/test/sample/sample.ouvrage.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>ouvrage-to-html.xsl</String>
+                                        <String>capitalize-first.xsl</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -58,7 +43,7 @@
                                     <null/>
                                 </field>
                                 <field name="name">
-                                    <String>ouvrage-to-html.xsl</String>
+                                    <String>capitalize-first.xsl</String>
                                 </field>
                                 <field name="baseURL">
                                     <String></String>
@@ -76,7 +61,7 @@
                                     <String></String>
                                 </field>
                                 <field name="inputXSLURL">
-                                    <String>file:/C:/Users/mricaud/_WORK/_github/xmlPrague2018/ouvrage-to-html/src/main/xsl/ouvrage-to-html.xsl</String>
+                                    <String>${pdu}/src/main/xsl/capitalize-first.xsl</String>
                                 </field>
                                 <field name="inputXMLURL">
                                     <String>${currentFileURL}</String>
@@ -97,10 +82,10 @@
                                     <Boolean>false</Boolean>
                                 </field>
                                 <field name="outputFile">
-                                    <File>${cfn}.html</File>
+                                    <File>${cfn}.capitalized-first.xml</File>
                                 </field>
                                 <field name="outputResource">
-                                    <String>${cfn}.html</String>
+                                    <String>${cfn}.capitalized-first.xml</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
@@ -133,7 +118,7 @@
                                     <String-array/>
                                 </field>
                                 <field name="xslTransformer">
-                                    <String>Saxon-EE</String>
+                                    <String>Saxon-HE</String>
                                 </field>
                                 <field name="extensionURLs">
                                     <String-array/>
@@ -145,7 +130,7 @@
             </serialized>
         </options>
     </meta>
-    <projectTree name="ouvrage-to-html.xpr">
+    <projectTree name="myProject.xpr">
         <folder path="."/>
     </projectTree>
 </project>
