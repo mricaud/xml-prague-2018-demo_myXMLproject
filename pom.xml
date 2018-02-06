@@ -2,15 +2,15 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>eu.els.projets.ouvrage</groupId>
-  <artifactId>ouvrage-2-html</artifactId>
+  <groupId>eu.els.projets</groupId>
+  <artifactId>myProject</artifactId>
   <version>1.0</version>
   <packaging>jar</packaging>
   
   <dependencies>
     <dependency>
-      <groupId>com.xsltfunctions</groupId>
-      <artifactId>functx</artifactId>
+      <groupId>eu.els.lib</groupId>
+      <artifactId>my-xslt-lib</artifactId>
       <version>1.0</version>
     </dependency>
   </dependencies>
@@ -22,6 +22,7 @@
         <directory>src/main/xsl</directory>
       </resource>
     </resources>
+    
     <plugins>
       
       <plugin>
@@ -52,7 +53,7 @@
       <plugin>
         <groupId>io.xspec.maven</groupId>
         <artifactId>xspec-maven-plugin</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1-RC6</version>
         <dependencies>
           <dependency>
             <groupId>extern.net.sf.saxon</groupId>
