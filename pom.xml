@@ -9,7 +9,7 @@
   
   <dependencies>
     <dependency>
-      <groupId>eu.els.lib.xsl</groupId>
+      <groupId>eu.els.lib</groupId>
       <artifactId>myXslLib</artifactId>
       <version>1.0</version>
     </dependency>
