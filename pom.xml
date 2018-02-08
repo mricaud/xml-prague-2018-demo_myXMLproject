@@ -9,8 +9,8 @@
   
   <dependencies>
     <dependency>
-      <groupId>eu.els.lib</groupId>
-      <artifactId>my-xslt-lib</artifactId>
+      <groupId>eu.els.lib.xsl</groupId>
+      <artifactId>myXslLib</artifactId>
       <version>1.0</version>
     </dependency>
   </dependencies>
@@ -53,18 +53,12 @@
       <plugin>
         <groupId>io.xspec.maven</groupId>
         <artifactId>xspec-maven-plugin</artifactId>
-        <version>1.5.1-RC6</version>
+        <version>1.5.1-RC7</version>
         <dependencies>
           <dependency>
-            <groupId>extern.net.sf.saxon</groupId>
-            <artifactId>saxonee-license</artifactId>
-            <version>9.7</version>
-          </dependency>
-          <dependency>
-            <groupId>extern.net.sf.saxon</groupId>
-            <artifactId>saxonee</artifactId>
-            <type>jar</type>
-            <version>9.7.0.13</version>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.8.0-8</version>
           </dependency>
         </dependencies>
         <configuration>
