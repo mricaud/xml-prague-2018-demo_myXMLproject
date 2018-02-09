@@ -106,45 +106,17 @@
       <plugin>
         <groupId>top.marchand.xml</groupId>
         <artifactId>xslDoc-maven-plugin</artifactId>
-        <version>0.10</version>
+        <version>0.11</version>
         <configuration>
           <xslDirEntries>
             <xslDirEntry>
               <xslDirectory>src/main/xsl</xslDirectory>
             </xslDirEntry>
           </xslDirEntries>
+          <catalog>catalog.xml</catalog>
         </configuration>
       </plugin>
     </plugins>
   </reporting>
-  
-  <distributionManagement>
-    <repository>
-      <id>nexus-releases</id>
-      <url>http://srvic/nexus/content/repositories/releases</url>
-      <layout>default</layout>
-    </repository>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://srvic/nexus/content/repositories/snapshots</url>
-      <layout>default</layout>
-    </snapshotRepository>
-    <site>
-      <id>xslLib</id>
-      <name>xslLib website</name>
-      <url>file:///var/www/html/Artefact/${project.groupId}/${project.artifactId}/${project.version}/</url>
-    </site>
-  </distributionManagement>
-  
-  <pluginRepositories>
-    <pluginRepository>
-      <id>nexus-public</id>
-      <url>http://srvic/nexus/content/groups/public</url>
-      <layout>default</layout>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
   
 </project>
