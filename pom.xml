@@ -24,6 +24,8 @@
     
     <plugins>
       
+      <!--A plugin to generate a catalog.xml file at the root of the project.
+        This catalog will be used to resolve artefactId:/ uri, based on dependencies declaration-->
       <plugin>
         <groupId>top.marchand.xml.maven</groupId>
         <artifactId>catalogBuilder-maven-plugin</artifactId>
@@ -41,14 +43,36 @@
             <goals>
               <goal>catalog</goal>
             </goals>
-            <configuration>
+            <!--Alternativ catalog file generation-->
+            <!--<configuration>
               <rewriteToProtocol>cp</rewriteToProtocol>
               <catalogFileName>target/generated-catalog/catalog.xml</catalogFileName>
-            </configuration>
+            </configuration>-->
           </execution>
         </executions>
       </plugin>
       
+      <!--A plugin to generate a fat jar including all dependencies-->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <!--A plugin to lauch xspec tests at build time-->
+      <!--Default directory where *.xspec files are searched : src/test-->
       <plugin>
         <groupId>io.xspec.maven</groupId>
         <artifactId>xspec-maven-plugin</artifactId>
@@ -74,26 +98,9 @@
         </executions>
       </plugin>
       
+      <!--A plugin to generate source with XSLT-->
+      <!--see http://www.mojohaus.org/xml-maven-plugin/transformation.html-->
       <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.6</version>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      
-      <plugin>
-        <!--http://www.mojohaus.org/xml-maven-plugin/transformation.html-->
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>xml-maven-plugin</artifactId>
         <version>1.0.1</version>
@@ -139,6 +146,8 @@
   </build>
   
   <reporting>
+    <!--A report plugin to generate xsl documentation, like java doc-->
+    <!--After building with command "mvn site", documentation is available in target/site--> 
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
