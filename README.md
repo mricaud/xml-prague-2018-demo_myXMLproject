@@ -17,13 +17,13 @@ For developing localy you have to use an XML IDE that can deal with catalogs, fo
     - go to: options > Preferences > XML > XML Catalogs
     - add a new catalog: ${pdu}/catalog.xml
 
-** Build the library:**
+**Build the library:**
 
 1. `git clone https://github.com/mricaud/xml-prague-2018-demo_myLib`
 1. `cd xml-prague-2018-demo_myLib`
 1. `mvn install`
 
-** Build this project:**
+**Build this project:**
 1. `git clone https://github.com/mricaud/xml-prague-2018-demo_myXMLproject`
 1. `cd xml-prague-2018-demo_myXMLproject` 
 1. `mvn install`
@@ -36,7 +36,7 @@ For developing localy you have to use an XML IDE that can deal with catalogs, fo
 ### Dependency
 
 This project consists of :
-- scr/main/xsl/say-hello.xsl, an xslt which call function myLib:say-hello()
+- scr/main/xsl/say-hello.xsl: an xslt which call function myLib:say-hello()
 - The function myLib:say-hello() is declared in another repository: https://github.com/mricaud/xml-prague-2018-demo_myLib
 - say-hello.xsl uses `<xsl:import href="myXslLib:/myLib.xsl"/>` to import this lib. 
 - The pom.xml references a dependency to this lib:
@@ -82,15 +82,6 @@ xspec-maven-plugin will lauch every XSPEC in src/test, if one XSPEC failed the b
 
 The results of the xspec tests will be available in target/xspec-reports.
 
-### xml-maven-plugin
-
-Maven is a kind of "Lego buid", you can use any available plugin.
-For example [xml-maven-plugin](http://www.mojohaus.org/xml-maven-plugin) can perform XML validation or generating new source code in the delivery.
-
-Here we use this plugin to generated a simple version of a schema: we simply make the attribute "hello" optional where it was mandatory in the original schema.
-
-In the delivery we can access to both schemas. If the original schema has modifications, the generated one will also have them.
-
 ### xslDoc-maven-plugin
 
 This is report plugin that generates XSLT documentation, like java doc.
@@ -99,3 +90,11 @@ You need to run `mvn site` to generate this documentation.
 
 The documentation wil be available in target/site.
 
+### xml-maven-plugin
+
+Maven is a kind of "Lego buid", you can use any available plugin.
+For example [xml-maven-plugin](http://www.mojohaus.org/xml-maven-plugin) can perform XML validation or generating new source code in the delivery.
+
+Here we use this plugin to generated a simple version of a schema: we simply make the attribute "hello" optional where it was mandatory in the original schema.
+
+In the delivery we can access to both schemas. If the original schema has modifications, the generated one will also have them.
