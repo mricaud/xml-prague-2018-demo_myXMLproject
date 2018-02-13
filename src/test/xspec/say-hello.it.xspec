@@ -4,7 +4,7 @@
   stylesheet="../../main/xsl/say-hello.xsl"
   xslt-version="3.0">
   
-  <x:scenario label="test" xml:base="../sample/">
+  <x:scenario label="test" xml:base="../resources/">
     <x:context>
       <anything/>
     </x:context>
