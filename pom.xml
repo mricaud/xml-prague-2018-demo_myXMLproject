@@ -23,13 +23,12 @@
     </resources>
     
     <plugins>
-      
       <!--A plugin to generate a catalog.xml file at the root of the project.
-        This catalog will be used to resolve artefactId:/ uri, based on dependencies declaration-->
+        This catalog will be used to resolve artefactId:/ uris, based on dependencies declaration-->
       <plugin>
         <groupId>top.marchand.xml.maven</groupId>
         <artifactId>catalogBuilder-maven-plugin</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.6</version>
         <executions>
           <execution>
             <id>preparation</id>
@@ -44,10 +43,10 @@
               <goal>catalog</goal>
             </goals>
             <!--Alternativ catalog file generation-->
-            <!--<configuration>
+            <configuration>
               <rewriteToProtocol>cp</rewriteToProtocol>
-              <catalogFileName>target/generated-catalog/catalog.xml</catalogFileName>
-            </configuration>-->
+              <catalogFileName>target/classes/catalog.xml</catalogFileName>
+            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -76,7 +75,7 @@
       <plugin>
         <groupId>io.xspec.maven</groupId>
         <artifactId>xspec-maven-plugin</artifactId>
-        <version>1.5.1-RC7</version>
+        <version>1.5.1</version>
         <dependencies>
           <dependency>
             <groupId>net.sf.saxon</groupId>
@@ -90,7 +89,7 @@
         </configuration>
         <executions>
           <execution>
-            <phase>test</phase>
+            <phase>integration-test</phase>
             <goals>
               <goal>run-xspec</goal>
             </goals>
@@ -141,19 +140,18 @@
           </dependency>
         </dependencies>
       </plugin>
-      
     </plugins>
   </build>
   
   <reporting>
-    <!--A report plugin to generate xsl documentation, like java doc-->
-    <!--After building with command "mvn site", documentation is available in target/site--> 
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>2.9</version>
       </plugin>
+      <!--A report plugin to generate xsl documentation, like java doc-->
+      <!--After building with command "mvn site", documentation is available in target/site--> 
       <plugin>
         <groupId>top.marchand.xml</groupId>
         <artifactId>xslDoc-maven-plugin</artifactId>
