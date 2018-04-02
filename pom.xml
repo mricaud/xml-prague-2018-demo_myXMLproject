@@ -38,6 +38,13 @@
         <groupId>top.marchand.xml.maven</groupId>
         <artifactId>catalogBuilder-maven-plugin</artifactId>
         <version>2.0.0-RC1</version>
+        <configuration>
+          <uriPatterns>
+            <uriPattern>compact</uriPattern>
+            <uriPattern>standard</uriPattern>
+            <uriPattern>full</uriPattern>
+          </uriPatterns>
+        </configuration>
         <executions>
           <execution>
             <id>preparation</id>
@@ -53,7 +60,7 @@
             </goals>
             <!--Alternativ catalog file generation-->
             <configuration>
-              <rewriteToProtocol>cp</rewriteToProtocol>
+              <rewriteToProtocol>cp:/</rewriteToProtocol>
               <catalogFileName>target/classes/catalog.xml</catalogFileName>
             </configuration>
           </execution>

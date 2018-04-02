@@ -3,7 +3,13 @@
   
   <!--<xsl:import href="dependency://eu.els.lib+myXslLib/myLib.xsl"/>-->
   <!--cals2html has a dependency to myXslLib, let's try 2 levels dependency here-->
+  
+  <!--compact-->
+  <xsl:import href="dependency://cals2html/cals2html.xsl"/>
+  <!--standard-->
   <xsl:import href="dependency://eu.els.lib+cals2html/cals2html.xsl"/>
+  <!--full-->
+  <xsl:import href="dependency://eu.els.lib+cals2html$1.2-newScheme/cals2html.xsl"/>
   
   <xd:doc>
     <xd:desc>
