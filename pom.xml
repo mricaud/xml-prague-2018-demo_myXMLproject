@@ -4,13 +4,22 @@
 
   <groupId>eu.els.projets</groupId>
   <artifactId>myProject</artifactId>
-  <version>1.0</version>
+  <version>1.0-newScheme</version>
   
-  <dependencies>
+  <!--<dependencies>
     <dependency>
       <groupId>eu.els.lib</groupId>
       <artifactId>myXslLib</artifactId>
       <version>1.0</version>
+    </dependency>
+  </dependencies>-->
+  
+  <!--cals2html has a dependency to myXslLib, let's try 2 levels dependency here-->
+  <dependencies>
+    <dependency>
+      <groupId>eu.els.lib</groupId>
+      <artifactId>cals2html</artifactId>
+      <version>1.2-newScheme</version>
     </dependency>
   </dependencies>
   
@@ -28,7 +37,7 @@
       <plugin>
         <groupId>top.marchand.xml.maven</groupId>
         <artifactId>catalogBuilder-maven-plugin</artifactId>
-        <version>1.0.6</version>
+        <version>2.0.0-RC1</version>
         <executions>
           <execution>
             <id>preparation</id>
