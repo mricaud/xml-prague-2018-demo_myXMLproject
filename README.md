@@ -1,18 +1,30 @@
-# XML Prague 2018
+# XML Prague 2018 
+
 ## Using Maven with XML projects - Demo "myProject"
 
-This repo holds "myProject" source presented at XML Prague 2018: [url to the presentation]
+> **UPDATE**: After the presentation at Prague a new [issue](https://github.com/cmarchand/maven-catalogBuilder-plugin/issues/4) has been opened and resolved in the maven-catalogBuilder-plugin.
+> 
+> Please clone branch "newScheme" of this repo to get the update.
 
-"myProject" has a XSL dependency to an xsl library in another Maven Project (https://github.com/mricaud/xml-prague-2018-demo_myLib).
+This repo holds "myProject" source presented at XML Prague 2018:
+
+- [Resume](http://www.xmlprague.cz/day2-2018/#cm)
+- [Slides](http://archive.xmlprague.cz/2018/files/presentations/XMLPRAGUE2018_maven-for-xml-projects_slides.pdf)
+- [Paper (proceding p.61)](http://archive.xmlprague.cz/2018/files/xmlprague-2018-proceedings.pdf#page=61)
+- [Video](https://www.youtube.com/watch?v=EJGjYQ1XAGk)
+
+Principe"myProject" has a XSL dependency to an xsl library located in another Maven Project "[myXslLib](https://github.com/mricaud/xml-prague-2018-demo_myLib)"
 
 **Requirements**
+
 - Java: http://www.oracle.com/technetwork/java/javase/downloads
 - Maven: https://maven.apache.org/download.cgi
 
 > Note: Maven is written in Java, so you need Java to building your XML Maven Project. But at the end, your final delivery may not run under Java. 
 > Your XMLProject will be encapsulated within a jar file, which may be used like a simple zip containing your xslt, schemas, etc.
 
-For developing localy you have to use an XML IDE that can deal with catalogs, for example:
+For local development your XML IDE needs to deal with XML catalogs, for example:
+
 - [Oxygen Editor](https://www.oxygenxml.com): 
     - go to: options > Preferences > XML > XML Catalogs
     - add a new catalog: ${pdu}/catalog.xml
@@ -24,18 +36,22 @@ For developing localy you have to use an XML IDE that can deal with catalogs, fo
 1. `mvn install`
 
 **Build this project:**
+
 1. `git clone https://github.com/mricaud/xml-prague-2018-demo_myXMLproject`
 1. `cd xml-prague-2018-demo_myXMLproject` 
 1. `mvn install`
 
 **Generate documentaion:**
-1.`mvn site`
+
+1. `mvn site`
+1. `cd target/site`
 
 ----------
 
 ### Dependency
 
-This project consists of :
+This project consists of:
+
 - scr/main/xsl/say-hello.xsl: an xslt which call function myLib:say-hello()
 - The function myLib:say-hello() is declared in another repository: https://github.com/mricaud/xml-prague-2018-demo_myLib
 - say-hello.xsl uses `<xsl:import href="myXslLib:/myLib.xsl"/>` to import this lib. 
@@ -50,6 +66,7 @@ This project consists of :
 ```
 
 ### catalogBuilder-maven-plugin
+
 This plugin will generate a catalog.xml file at the root of the project.
 
 This catalog will be used to resolve artefactId:/ uri, based on dependencies declaration.
@@ -63,9 +80,12 @@ Here, the catalog references the jar where xslLib is installed, it should look l
 </catalog>
 ```
 
-> When a lib is available in your maven repository (Nexus, Maven Central, ...) you don't need to install it, Maven will automaticaly get all dependency in your .m2 directory. 
+When the dependency has a dependency the plugin will generate every dependencies entry in the catalog by reading each pom.xml recursively.
+
+> When a lib is available in your maven repository (Nexus, Maven Central, ...) you don't need to install it, Maven will automatically get all dependency in your .m2 directory.
 
 ### maven-assembly-plugin
+
 The result of the build is a jar file, you can change that.
 
 Here you get myProject-1.0.jar.
@@ -76,11 +96,11 @@ Here we get myProject-1.0-jar-with-dependencies.jar
 
 ### xspec-maven-plugin
 
-If you wan to add unit test to you XSLT, you may use XSPEC.
+If you want to add Unit Tests to you XSLT, you may use XSpec.
 
-xspec-maven-plugin will lauch every XSPEC in src/test, if one XSPEC failed the build will also fail.
+xspec-maven-plugin will lauch every XSpec in src/test, if one XSpec failed the build will also fail.
 
-The results of the xspec tests will be available in target/xspec-reports.
+The results of the XSpec tests will be available in target/xspec-reports.
 
 ### xslDoc-maven-plugin
 
@@ -88,11 +108,11 @@ This is report plugin that generates XSLT documentation, like java doc.
 
 You need to run `mvn site` to generate this documentation.
 
-The documentation wil be available in target/site.
+The documentation will be available in `target/site`.
 
 ### xml-maven-plugin
 
-Maven is a kind of "Lego buid", you can use any available plugin.
+Maven is a kind of "Lego buid", you can use any availables plugins.
 For example [xml-maven-plugin](http://www.mojohaus.org/xml-maven-plugin) can perform XML validation or generating new source code in the delivery.
 
 Here we use this plugin to generated a simple version of a schema: we simply make the attribute "hello" optional where it was mandatory in the original schema.
