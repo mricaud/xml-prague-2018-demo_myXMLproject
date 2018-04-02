@@ -3,24 +3,23 @@
 ## Using Maven with XML projects - Demo "myProject"
 
 > **UPDATE**: After the presentation at Prague a new [issue](https://github.com/cmarchand/maven-catalogBuilder-plugin/issues/4) has been opened and resolved in the maven-catalogBuilder-plugin.
-> 
-> Please clone branch "newScheme" of this repo to get the update.
+> Please clone branch "newScheme" of this repo to get this update.
 
 This repo holds "myProject" source presented at XML Prague 2018:
 
 - [Resume](http://www.xmlprague.cz/day2-2018/#cm)
 - [Slides](http://archive.xmlprague.cz/2018/files/presentations/XMLPRAGUE2018_maven-for-xml-projects_slides.pdf)
-- [Paper (proceding p.61)](http://archive.xmlprague.cz/2018/files/xmlprague-2018-proceedings.pdf#page=61)
+- [Paper (proceedings p.61)](http://archive.xmlprague.cz/2018/files/xmlprague-2018-proceedings.pdf#page=61)
 - [Video](https://www.youtube.com/watch?v=EJGjYQ1XAGk)
 
-Principe"myProject" has a XSL dependency to an xsl library located in another Maven Project "[myXslLib](https://github.com/mricaud/xml-prague-2018-demo_myLib)"
+Principle: "myProject" has a XSL dependency to an xsl library located in another Maven Project "[myXslLib](https://github.com/mricaud/xml-prague-2018-demo_myLib)".
 
 **Requirements**
 
 - Java: http://www.oracle.com/technetwork/java/javase/downloads
 - Maven: https://maven.apache.org/download.cgi
 
-> Note: Maven is written in Java, so you need Java to building your XML Maven Project. But at the end, your final delivery may not run under Java. 
+> Note: Maven is written in Java, so you need Java to build your XML Maven Project. But at the end, your final delivery may not run under Java. 
 > Your XMLProject will be encapsulated within a jar file, which may be used like a simple zip containing your xslt, schemas, etc.
 
 For local development your XML IDE needs to deal with XML catalogs, for example:
@@ -112,7 +111,7 @@ The documentation will be available in `target/site`.
 
 ### xml-maven-plugin
 
-Maven is a kind of "Lego buid", you can use any availables plugins.
+Maven is a kind of "Lego build", you can use any available plugins.
 For example [xml-maven-plugin](http://www.mojohaus.org/xml-maven-plugin) can perform XML validation or generating new source code in the delivery.
 
 Here we use this plugin to generated a simple version of a schema: we simply make the attribute "hello" optional where it was mandatory in the original schema.
