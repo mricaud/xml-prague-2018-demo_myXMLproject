@@ -53,7 +53,7 @@ This project consists of:
 
 - scr/main/xsl/say-hello.xsl: an xslt which call function myLib:say-hello()
 - The function myLib:say-hello() is declared in another repository: https://github.com/mricaud/xml-prague-2018-demo_myLib
-- say-hello.xsl uses `<xsl:import href="myXslLib:/myLib.xsl"/>` to import this lib. 
+- say-hello.xsl uses `<xsl:import href="dependency:/eu.els.lib+myXslLib/myLib.xsl"/>` to import this lib. 
 - The pom.xml references a dependency to this lib:
 
 ```xml
@@ -74,8 +74,8 @@ Here, the catalog references the jar where xslLib is installed, it should look l
 
 ```xml
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-  <rewriteURI uriStartString="myXslLib:/" rewritePrefix="jar:file:C:\Users\you\.m2\repository\eu\els\lib\myXslLib\1.0\myXslLib-1.0.jar!/"></rewriteURI>
-  <rewriteSystem systemIdStartString="myXslLib:/" rewritePrefix="jar:file:C:\Users\you\.m2\repository\eu\els\lib\myXslLib\1.0\myXslLib-1.0.jar!/"></rewriteSystem>
+  <rewriteURI uriStartString="dependency:/eu.els.lib+myXslLib/" rewritePrefix="jar:file:C:\Users\you\.m2\repository\eu\els\lib\myXslLib\1.0\myXslLib-1.0.jar!/"/>
+  <rewriteSystem systemIdStartString="dependency:/eu.els.lib+myXslLib/" rewritePrefix="jar:file:C:\Users\you\.m2\repository\eu\els\lib\myXslLib\1.0\myXslLib-1.0.jar!/"/>
 </catalog>
 ```
 
