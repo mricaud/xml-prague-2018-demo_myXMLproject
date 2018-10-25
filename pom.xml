@@ -4,7 +4,7 @@
 
   <groupId>eu.els.projets</groupId>
   <artifactId>myProject</artifactId>
-  <version>1.0</version>
+  <version>2.0-SNAPSHOT</version>
   
   <dependencies>
     <dependency>
@@ -28,7 +28,7 @@
       <plugin>
         <groupId>top.marchand.xml.maven</groupId>
         <artifactId>catalogBuilder-maven-plugin</artifactId>
-        <version>1.0.6</version>
+        <version>3.0.0</version>
         <executions>
           <execution>
             <id>preparation</id>
@@ -42,9 +42,11 @@
             <goals>
               <goal>catalog</goal>
             </goals>
-            <!--Alternativ catalog file generation-->
+            <!--Alternativ catalog file generation redirecting to "cp protocol" 
+              (that means all jars - or fat jar with all dependencies - are loaded into the classpath 
+              when executing this artifact as a devivery jar)-->
             <configuration>
-              <rewriteToProtocol>cp</rewriteToProtocol>
+              <rewriteToProtocol>cp:/</rewriteToProtocol>
               <catalogFileName>target/classes/catalog.xml</catalogFileName>
             </configuration>
           </execution>
